@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "9BD9128E9D0E9A8C47A0321272B7C2EC11E9035C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9BD9128E9D0E9A8C47A0321272B7C2EC11E9035C" : 0,
+    "DC743CC42480707257F1543E05E28EA889794192" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BA91D8D9-CA75-49E4-88C7-7649BEBC6C12",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9BD9128E9D0E9A8C47A0321272B7C2EC11E9035C" : "Split\/",
+    "DC743CC42480707257F1543E05E28EA889794192" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Split",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Split.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/penisfuckers\/split.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9BD9128E9D0E9A8C47A0321272B7C2EC11E9035C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/3dmund\/projects.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DC743CC42480707257F1543E05E28EA889794192"
+    }
+  ]
+}
