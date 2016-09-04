@@ -17,29 +17,37 @@ var arrayCheckout = [String]()
 class ListViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
     //    // MARK: Variables
     //    var items = [Item]()
-    @IBOutlet var newItemTextField: UITextField!
+    var newItemTextField: UITextField!
+//    var addTextField: UITextField
     @IBOutlet var itemsTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        let screen = self.view.frame
+        let navigationBar = self.navigationController?.navigationBar.frame.size
+        
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        
+        // Add text field
+        addTextField()
         
         // itemsTable appearance
         itemsTable.separatorStyle = .None
         self.view.backgroundColor = UIColor(red:0.95, green:0.95, blue:0.95, alpha:1.0)
         itemsTable.backgroundColor = UIColor.clearColor()
         
-        // newItemTextField appearance
-        newItemTextField.layer.cornerRadius = 5.0
-        newItemTextField.frame = CGRectMake(0, 10, 100, 100)
+        // itemsTable contraints
         
+        let itemsTableVerticalContraint = NSLayoutConstraint(item: itemsTable, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: (navigationBar?.height)! + screen.height * 0.09)
+        view.addConstraint(itemsTableVerticalContraint)
         
-//        newItemTextField.borderStyle = .None
-//        let textFieldView : UIView = UIView(frame: CGRectMake(0, 10, 100, 100))
-//        
-//        newItemTextField.addSubview(textFieldView)
+        let itemsTableLeading = NSLayoutConstraint(item: itemsTable, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .LeadingMargin, multiplier: 1.0, constant: -20)
+        view.addConstraint(itemsTableLeading)
+        
+        let itemsTableTrailing = NSLayoutConstraint(item: itemsTable, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .TrailingMargin, multiplier: 1.0, constant: -20)
+        view.addConstraint(itemsTableTrailing)
         
         /*
         let databaseRef = FIRDatabase.database().reference()
@@ -423,6 +431,54 @@ class ListViewController: UIViewController, UITextFieldDelegate, UITableViewDele
         return indexPath
     }
     
+    // MARK: Helper functions
+    func addTextField() {
+        let screen = self.view.frame
+        let navigationBar = self.navigationController?.navigationBar.frame.size
+        newItemTextField = UITextField(frame: CGRectMake(0, 0, screen.width * 0.915, screen.height * 0.08))
+        newItemTextField.center.x = self.view.center.x
+        newItemTextField.center.y = (navigationBar?.height)! + screen.height * 0.09
+        //        usernameTextField.placeholder = "Enter text here"
+        newItemTextField.attributedPlaceholder = NSAttributedString(string:"Add...", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        newItemTextField.font = UIFont.systemFontOfSize(20)
+        newItemTextField.textColor = UIColor.whiteColor()
+        //        usernameTextField.borderStyle = UITextBorderStyle.RoundedRect
+        //        usernameTextField.autocorrectionType = UITextAutocorrectionType.No
+        //        usernameTextField.keyboardType = UIKeyboardType.Default
+        //        usernameTextField.returnKeyType = UIReturnKeyType.Done
+        //        usernameTextField.clearButtonMode = UITextFieldViewMode.WhileEditing;
+        newItemTextField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
+        newItemTextField.delegate = self
+        newItemTextField.backgroundColor = UIColor(red:0.18, green:0.60, blue:0.86, alpha:0.7)
+        newItemTextField.layer.cornerRadius = 3.5
+//        newItemTextField.background.opac
+        
+        let border = CALayer()
+        let width = CGFloat(2.0)
+        border.borderColor = UIColor.whiteColor().CGColor
+        
+//        border.frame = CGRect(x: 0, y: newItemTextField.frame.size.height - width, width:  newItemTextField.frame.size.width, height: newItemTextField.frame.size.height)
+        
+        // Add username icon
+        
+        let imageView = UIImageView()
+        let image = UIImage(named: "plus")
+        imageView.image = image
+        imageView.frame = CGRect(x: 0, y: 0, width: screen.height * 0.04, height: screen.height * 0.04)
+        let leftView = UIView.init(frame: CGRectMake(0, 0, screen.height * 0.08, screen.height * 0.07))
+        leftView.addSubview(imageView)
+        imageView.center.x = leftView.center.x
+        imageView.center.y = leftView.center.y
+        newItemTextField.leftViewMode = UITextFieldViewMode.Always
+        newItemTextField.leftView = leftView
+        
+        
+        border.borderWidth = width
+        newItemTextField.layer.addSublayer(border)
+        newItemTextField.layer.masksToBounds = true
+        
+        self.view.addSubview(newItemTextField)
+    }
     
     // MARK: - Navigation
     
